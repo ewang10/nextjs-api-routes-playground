@@ -1,13 +1,15 @@
 import { readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
-const buildFeedbackPath = () => path.join(process.cwd(), 'data', 'feedback.json');
-const extractFeedback = (filePath) => {
+export const buildFeedbackPath = () => path.join(process.cwd(), 'data', 'feedback.json');
+
+export const extractFeedback = (filePath) => {
     const fileData = readFileSync(filePath);
     const data = JSON.parse(fileData);
 
     return data;
 };
+
 const handler = (req, res) => {
     if (req.method === 'POST') {
         const { email, text } = req.body;
